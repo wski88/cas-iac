@@ -1,5 +1,5 @@
 name: Agnostic-Apache
-version: 2
+version: 3
 inputs: {}
 resources:
   Cloud_Machine_1:
