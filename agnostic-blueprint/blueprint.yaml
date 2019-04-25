@@ -1,5 +1,5 @@
 name: Agnostic-Apache
-version: 3
+version: 4
 inputs: {}
 resources:
   Cloud_Machine_1:
@@ -7,8 +7,7 @@ resources:
     properties:
       image: Ubuntu
       flavor: Small
-      contraints:
-        - tag:'team:tatubola'
+      tag:'team:tatubola'
       networks:
         - name: '${resource.Cloud_Network_1.name}'
       cloudConfig: |
