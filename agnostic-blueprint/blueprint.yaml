@@ -1,5 +1,6 @@
-name: Agnostic-Blueprint
-version: 1
+name: Agnostic-Apache
+version: 2
+inputs: {}
 resources:
   Cloud_Machine_1:
     type: Cloud.Machine
@@ -7,7 +8,20 @@ resources:
       image: Ubuntu
       flavor: Small
       networks:
-        - name: '${resource.Cloud_Network_1.name}' 
+        - name: '${resource.Cloud_Network_1.name}'
+      cloudConfig: |
+        #cloud-config
+        repo_update: true
+        repo_upgrade: all
+        packages:
+         - apache2
+        #Wavefront Proxy
+        runcmd:
+         - sudo bash -c "$(curl -sL https://wavefront.com/install)" -- install --proxy --wavefront-url https://surf.wavefront.com/ --api-token c61560cb-7e3b-4d51-b0ba-d9d1770ae799
+        #Telegraf Install
+         - sudo bash -c "$(curl -sL https://wavefront.com/install)" -- install --agent --proxy-address localhost --proxy-port 2878
+         
+         
   Cloud_Network_1:
     type: Cloud.Network
     properties:
