@@ -1,12 +1,12 @@
 name: Agnostic-Apache
-version: 6
+version: 7
 inputs: {}
 resources:
   Cloud_Machine_1:
     type: Cloud.Machine
     properties:
       image: Ubuntu
-      flavor: Small
+      flavor: medium
       tags:
         - key: team:TATUBOLA
       networks:
